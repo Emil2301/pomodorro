@@ -1,0 +1,30 @@
+
+.button {
+  width: 6.56rem;
+  height: 3rem;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 1.66rem;
+  color: #D7E0FF;
+  background: #161932;
+}
+
+@media (min-width: 30rem) {
+  .button {
+    width: 7.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+.activeButton {
+  color: #1E213F;
+  background: #F87070;
+  opacity: 1;
+  &:hover {
+    opacity: 1;
+    border: none;
+  }
+}
