@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&display=swap');
+
+$timer-container-mobile-size: 18.75rem;
+$timer-container-tablet-and-desktop-size: 25.625rem;
+$timer-mobile-size: 15.625rem;
+$timer-tablet-and-desktop-size: 21.1875rem;
+$progress-bar-and-border-thickness-mobile-size: 0.6175rem;
+
+%kumbhSansFont {
+    color: #D7E0FF;
+    text-align: center;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.timerContainer {
+    margin-top: 3rem;
+}
+
+@media (min-width: 30rem) and (orientation: portrait) {
+    .timerContainer {
+        margin-top: 6.8125rem;
+    }
+}
+
+@media (min-width: 30rem) and (orientation: landscape) {
+    .timerContainer {
+        margin-top: 4.7vh;
+    }
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    width: $timer-container-mobile-size;
+    height: $timer-container-mobile-size;
+    border-radius: $timer-container-mobile-size;
+    background: linear-gradient(315deg, #2E325A 0%, #0E112A 100%);
+    box-shadow: 50px 50px 100px 0px #121530, -50px -50px 100px 0px #272C5A;
+}
+
+@media (min-width: 48rem) {
+    .container {
+        width: $timer-container-tablet-and-desktop-size;
+        height: $timer-container-tablet-and-desktop-size;
+        border-radius: $timer-container-tablet-and-desktop-size;
+    }
+}
+
+@media (min-width: 48rem) and (max-height: 38rem) {
+    .container {
+        width: $timer-container-mobile-size;
+        height: $timer-container-mobile-size;
+        border-radius: $timer-container-mobile-size;
+    }
+}
+
+.container .progress {
+    position: relative;
+    width: $timer-mobile-size;
+    height: $timer-mobile-size;
+    border-radius: 50%;
+    color: white;
+    background: #1E213F linear-gradient(to right, transparent 50%, #F87070 0);
+    border: $progress-bar-and-border-thickness-mobile-size solid #1E213F;
+}
+
+@media (min-width: 48rem) {
+    .container .progress {
+        width: $timer-tablet-and-desktop-size;
+        height: $timer-tablet-and-desktop-size;
+    }
+}
+
+@media (min-width: 48rem) and (max-height: 38rem) {
+    .container {
+        width: $timer-mobile-size;
+        height: $timer-mobile-size;
+    }
+}
+
+.container .progress::before {
+    content: '';
+    display: block;
+    height: 100%;
+    margin-left: 50%;
+    transform-origin: left;
+    border-radius: 0 100% 100% 0/50%;
+    background-color: #F87070;
+    transform: rotate(calc((var(--percentOfTimePassed) - 50) * 0.01turn));
+}
+
+.container .progress::after {
+    content: '';
+    position: absolute;
+    inset: $progress-bar-and-border-thickness-mobile-size;
+    border-radius: 50%;
+    background: #1E213F;
+}
+
+.timeLeft {
+    @extend %kumbhSansFont;
+    font-size: 5rem;
+    letter-spacing: -0.25rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.pauseButton {
+    @extend %kumbhSansFont;
+    font-size: 0.875rem;
+    letter-spacing: 0.82rem;
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translateX(-42%);
+    z-index: 1;
+}
+
+@media (min-width: 48rem) {
+    .timeLeft {
+        font-size: 6.25rem;
+        letter-spacing: -0.3125rem;
+    }
+
+    .pauseButton {
+        font-size: 1rem;
+        letter-spacing: 0.9375rem;
+    }
+}
+
+@media (min-width: 30rem) and (max-height: 46.875rem) and (orientation: landscape) {
+    .container {
+        width: $timer-container-mobile-size;
+        height: $timer-container-mobile-size;
+        border-radius: $timer-container-mobile-size;
+    }
+
+    .container .progress {
+        width: $timer-mobile-size;
+        height: $timer-mobile-size;
+    }
+
+    .timeLeft {
+        font-size: 5rem;
+        letter-spacing: -0.25rem;
+    }
+
+    .pauseButton {
+        font-size: 0.875rem;
+        letter-spacing: 0.82rem;
+    }
+}
